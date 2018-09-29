@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Updating Style Attribute</title>
+</head>
+<body>
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+<br><br><br>
+
+<div id="app">
+
+<br><br><br>
+<input type="number" v-model="myFontSize">
+<br><br><br>
+
+	<div :style="{
+		'text-align': 'center',
+		width: '25em', 
+		border: '1px solid #333', 
+		'box-shadow': '8px 8px 5px #444', 
+		padding: '8px 12px', 
+		'background-image': 'linear-gradient(120deg, #78A9FF, #ddd 30%, #F9E1FA)',
+		fontSize: myFontSize +'px'}"
+	>
+
+
+		<p>Welcome to Visit My Website<br>www.sctongye.com</p>
+	  
+	</div>
+
+	<div :style="tyDiv1">
+		<p>This is the second block</p>
+	</div>
+
+	<div :style="[tyDiv1, tyDiv2]"
+		@mouseover="tyDiv2.color='white', tyDiv2.backgroundColor='#DC4C46'"
+		@mouseout="tyDiv2.color='#2E4A62', tyDiv2.backgroundColor='#BFD641'"
+	>
+		<p>This is the third block</p>
+	</div>
+
+
+
+</div>
+
+<script>
+    new Vue({
+       el: '#app',
+       data: {
+          myFontSize: 20,
+          tyDiv1: {
+          	  color: 'white',
+          	  backgroundColor: '#6B5B95',
+          	  borderRadius: '20px',
+          	  padding: '10px',
+          	  marginTop: '30px'
+          },
+          tyDiv2: {
+          	  color: '#2E4A62',
+          	  fontFamily: 'Impact, Charcoal',
+          	  backgroundColor: '#BFD641',
+          	  border: 'dashed 3px red',
+          	  padding: '30px'
+          }
+       }
+    });
+</script>
+
+</body>
+</html>

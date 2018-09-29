@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Two-way Binding</title>
+</head>
+<body>
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+<div id="app">
+	<form method="post" action="/">
+		<br><br><br>
+			<label for="email">Email</label> <input type="email" v-model.lazy="email" id="email">
+			<fieldset>
+				<legend>Click the fruit(s) you like:</legend>
+
+				<div v-for="(fruit, index) in fruits">
+			        <input type="checkbox" v-model="selectedFruits" :value="fruit.id"> {{index+1}}. {{fruit.name}}
+			    </div>
+
+			</fieldset>
+			<input type="submit" value="Subscribe">
+
+			<!-- <p>You entered {{email}}.</p> -->
+			<!-- <p>You selected {{selectedFruits.join(", ")}}</p> -->
+
+			<!-- <p v-show="selectedFruits.length > 0">You selected: {{selectedFruits.join(", ")}}</p> -->
+
+			<p v-if="selectedFruits.length == 5">What the F.. You selected them all!! You foodie!</p>
+			<p v-else-if="selectedFruits.length > 0">You selected: {{selectedFruits.join(", ")}}</p>
+			<p v-else>Please select at least one fruit.</p>
+
+			<div v-for="i in 10">{{i}}</div>
+
+	</form>
+</div>
+<script>
+	var vm = new Vue({
+
+		el: "#app",
+		data:{
+			email: "",
+			selectedFruits:[],
+			fruits: [
+				{id:1, name:"Apple"},
+				{id:2, name:"Orange"},
+				{id:3, name:"Kiwi"},
+				{id:4, name:"Pineapple"},
+				{id:5, name:"Banana"}
+			]
+		}
+
+	});
+</script>
+
+
+</body>
+</html>
